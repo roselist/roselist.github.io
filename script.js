@@ -4,11 +4,14 @@
 // Date: 4/5/2018
 // Assignment: Shpping List Version 4.0
 
-//v 4.0 read cookie on load and display
+//v4.0 Add popup describing app when visitors load webpage the first time
 window.onload = function() {
-  populateshoppinglistonload();
-   displayShoppinglists();
+    alert("Welcome to 'Shopping List' App!\n\nCreated by Rock Valley College\n**Javascript(Web233) Students**\n\nQuestions?\nemail Professor Chuck Konkol\nc.konkol@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
+    populateshoppinglistonload();
+    displayShoppinglists();
+    clearFocus();
 };
+
 
 //read cookie and return
 function readCookie(name) {
@@ -142,9 +145,9 @@ function addtoshopcart(item, num) {
 }
 
 //v 3.1 Update function addShoppinglist by adding objects
-function addShoppinglist(item,cost) {
+function addShoppinglist(item) {
   //v 3.0 declare variable for groc string
-  var groc="";
+  /*var groc="";
   //v 3.0 v 3.0 declare variable for loop count
   var count=0;
   //v 3.0 edit value for MyItems.name
@@ -163,9 +166,11 @@ function addShoppinglist(item,cost) {
     }
     //increment count by 1
    count++;
-  }
+  }*/
   //push to shoppinglist
-  shoppinglist.push(groc);
+  if (item!="")
+  {
+  shoppinglist.push(item);
   //display shoppinglist
   displayShoppinglists();
 //v3.1 display displayShoppingCart() 
@@ -173,12 +178,16 @@ function addShoppinglist(item,cost) {
   clearFocus();
   //v 4.0 save cookie
   savecookie();
+  }else{
+	  alert("Please enter an item :");
+	  clearFocus();
+  }
 }
 
 function clearFocus()
 {
   document.getElementById("item").value = "";
-   document.getElementById("cost").value = "";
+  // document.getElementById("cost").value = "";
   document.getElementById("item").focus();
 }
 
@@ -195,7 +204,7 @@ var btnupdate =  ' <input class="button" name="edit" type="button" value="Edit I
 //v 3.1 add edit button using below i index & name it btnpdate
 var arrays = shoppinglist[i];
 arrays = "'"+arrays+"'";
-var btnaddcart =  '<label><input name="add" type="checkbox" id="adds" value="Add to Shopping Cart" onclick="addtoshopcart('+arrays+','+ i +')" />Add</label>';
+var btnaddcart =  '<label><input name="add" type="checkbox" id="adds" value="Add to Shopping Cart" onclick="addtoshopcart('+arrays+','+ i +')" /></label>';
 TheRow = '<li>' + shoppinglist[i] + btndelete + ' '  + btnaddcart + '</li>';
 TheList += TheRow;
 }
@@ -222,7 +231,7 @@ var btnupdate =  ' <input class="button" name="edit" type="button" value="Edit I
 var arrays = addtocart[i];
 arrays = "'"+arrays+"'";
 //v 3.1 add edit button using below i index & name it btnpdate
-var btnaddlist =  '<label><input name="add" type="checkbox" id="adds" value="Add to Shopping List" onclick="addbacktoshoppinglist('+arrays+',' + i + ')" checked="checked"/>Add</label>';
+var btnaddlist =  '<label><input name="add" type="checkbox" id="adds" value="Add to Shopping List" onclick="addbacktoshoppinglist('+arrays+',' + i + ')" checked="checked"/></label>';
 TheRow =  "<li>" + addtocart[i] + btndelete + ' ' +  ' ' + btnaddlist + '<br></li>';
 TheList += TheRow;
 }
@@ -248,3 +257,6 @@ function deleteShoppingCart(position) {
   displayShoppinglists();
   displayShoppingCart();
 }
+
+
+

@@ -8,15 +8,17 @@
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="description" content="">
    <meta name="author" content="">
-   <script src="script.js"></script>
+   
  </head>
 
  <body>
+ <script src="script.js"></script>
    <h1>Shopping List</h1>
     <div id="input">
-     Name: <input type="text" id="item" name="item" /><br><br>
-     Cost: &nbsp;&nbsp;<input type="text" id="cost" name="cost" /><br><br>
-     <input class="button" name="submit" type="button" value="Add Item" onclick="addShoppinglist(item.value, cost.value)" />
+     <label>Item: </label><input type="text" id="item" name="item" onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('btnSubmit').click()" maxlength="18" />
+      <br><br>
+     <input class="button" id="btnSubmit" name="submit" type="button" value="Add Item" onclick="addShoppinglist(item.value)" />
     </div>
   
   <p id="MyList"></p>
