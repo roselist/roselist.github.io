@@ -1,48 +1,25 @@
 <!DOCTYPE html>
-
 <html>
+ <head>
+   <title>WEB 233 Shopping List</title>
+   <link rel="stylesheet" href="style.css">
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <script src="script.js"></script>
+ </head>
 
-  
-<head>
- 
-<title>WEB 233 Shopping List</title>
-<link rel="stylesheet" href="style.css">
-    
-<meta charset="utf-8">
-    
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    
-<meta name="viewport" content="width=device-width, initial-scale=1">
-    
-<meta name="description" content="">
-    
-<meta name="author" content="">
-    
-<script src="script.js"></script>
-    
-</head>
-
-  
-
-<body>
-    
-<h1>Shopping List</h1>
-    
-<div id="input">
+ <body>
+   <h1>Shopping List</h1>
+    <div id="input">
      Name: <input type="text" id="item" name="item" /><br><br>
-      
-Cost: &nbsp;&nbsp;<input type="text" id="cost" name="cost" /><br><br>
-      
-<input class="button" name="submit" type="button" value="Add Item" onclick="addShoppinglist(item.value, cost.value)" />
-      
-</div>
+     Cost: &nbsp;&nbsp;<input type="text" id="cost" name="cost" /><br><br>
+     <input class="button" name="submit" type="button" value="Add Item" onclick="addShoppinglist(item.value, cost.value)" />
+    </div>
   
-<p id="MyList"></p>
-   
-<p id="MyCart"></p>      
-  
-</body>
-
-
-
+  <p id="MyList"></p>
+  <p id="MyCart"></p>      
+ </body>
 </html>
