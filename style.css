@@ -1,0 +1,31 @@
+body{
+  background-color:efefef;
+  border: solid 1px;
+}
+
+h1{
+  text-align: center;
+  color: a9a9a9;
+}
+
+#input{
+  padding-left: 50px;
+}
+
+label{
+  float: left;
+  margin-right:50px;
+ }
+
+#remove{
+   float:right;
+   margin-right:10px;
+}
+ul {
+    list-style-type:none;
+}
+li {
+    line-height:2;
+}
+
+
