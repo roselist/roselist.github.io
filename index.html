@@ -13,15 +13,20 @@
 
  <body>
  <script src="script.js"></script>
-   <h1>Shopping List</h1>
-    <div id="input">
+     <div id="wrapper">
+	 <h1>Shopping List</h1>
      <label>Item: </label><input type="text" id="item" name="item" onkeydown = "if (event.keyCode == 13)
                         document.getElementById('btnSubmit').click()" maxlength="18" />
       <br><br>
      <input class="button" id="btnSubmit" name="submit" type="button" value="Add Item" onclick="addShoppinglist(item.value)" />
-    </div>
   
-  <p id="MyList"></p>
-  <p id="MyCart"></p>      
+  
+   <p id="MyList"></p>
+   <p id="labels"></p>
+   <p id="MyCart"></p>   
+    <center><input class="button" id="about" name="submit" type="submit" value="about" onclick="about()" /> About This App</center>
+    <center><p id="sharelist"></p></center>
+     <center><p id="sharebutton"></p></center>
+  </div>  
  </body>
 </html>

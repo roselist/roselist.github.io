@@ -1,9 +1,63 @@
 // Laura Rose
 // Spring 2018
 // Web233 Javascript
-// Date: 4/5/2018
-// Assignment: Shpping List Version 4.0
+// Date: 4/6/2018
+// Assignment: Shpping List Week 14
 
+
+//v4.1 get values via URL
+function get(name){
+    var url = window.location.search;
+    var num = url.search(name);
+    var namel = name.length;
+    var frontlength = namel+num+1; //length of everything before the value
+    var front = url.substring(0, frontlength);
+    url = url.replace(front, "");
+    num = url.search("&");
+    if(num>=0) return url.substr(0,num);
+    if(num<0)  return url;
+}
+//vFinal ShareList via bitly api
+/*function passlist()
+{
+   var getshorturl=0;
+   var login = "o_3iokgmm945";
+   var api_key = "R_f2f3c9387a374e3fc6bf4b1ec2c945c4";
+   var long_url = "https://rvclist.github.io/index.html?list="+ shoppinglist;
+  try{
+  $.getJSON(
+             "https://api-ssl.bitly.com/v3/shorten?callback=?",
+              {
+             "format": "json",
+              "apiKey": api_key,
+             "login": login,
+              "longUrl": long_url
+              },
+             function(response)
+             {
+                getshorturl = 1;
+                document.getElementById("sharelist").innerHTML = 'Share List:\n' + response.data.url;
+                copyToClipboard(response.data.url);
+                // copyToClipboard('sharelist');
+                 //alert("ShoppingList URL Copied");
+             });
+  } catch(err) {
+   //alert("Error : "+ err);
+    document.getElementById("sharelist").innerHTML = 'Share List:\n' + long_url;
+    //copyToClipboard("sharelist");
+    copyToClipboard(long_url);
+    //alert("ShoppingList URL Copied");
+}
+}
+//vFinal share function
+function share()
+{
+   passlist();
+}
+//v4.1 prompt message to copy URL
+function copyToClipboard(text) {
+   window.prompt("Copy & Share List!", text);
+}*/
 //v4.0 Add popup describing app when visitors load webpage the first time
 window.onload = function() {
     alert("Welcome to 'Shopping List' App!\n\nCreated by Rock Valley College\n**Javascript(Web233) Students**\n\nQuestions?\nemail Professor Chuck Konkol\nc.konkol@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
@@ -11,7 +65,11 @@ window.onload = function() {
     displayShoppinglists();
     clearFocus();
 };
-
+function about()
+{
+    alert("Welcome to 'Shopping List' App!\n\nCreated by Rock Valley College\n**Javascript(Web233) Students**\n\nQuestions?\nemail Professor Chuck Konkol\nc.konkol@rockvalleycollege.edu\n\nRegister @ RockValleyCollege.edu");
+    
+}
 
 //read cookie and return
 function readCookie(name) {
@@ -65,10 +123,16 @@ function populateshoppinglistonload()
   //remove unwanted chars and format
   y = remove_unwanted(y); 
   //spit array by comma %2C
-  y = y.split('%2C');
-  if (y) {
-    shoppinglist = y;
-   }
+   //v 4.1 get URL
+  var geturllistvalue = get("list");
+    if (geturllistvalue) {
+        geturllistvalue = remove_unwanted(geturllistvalue);
+      geturllistvalue = geturllistvalue.split(',');
+      shoppinglist = geturllistvalue;
+  }else if (y){
+       y = y.split('%2C');
+      shoppinglist = y;
+  }
 }
 
 
@@ -132,6 +196,7 @@ function addbacktoshoppinglist(item,num) {
 
 //v 3.1 Update function addShoppinglist by adding objects
 function addtoshopcart(item, num) {
+	 document.getElementById("sharelist").innerHTML = ' ';
     deleteShoppinglists(num);
     addtocart.push(item);
   //display shoppinglist
@@ -170,6 +235,7 @@ function addShoppinglist(item) {
   //push to shoppinglist
   if (item!="")
   {
+	   document.getElementById("sharelist").innerHTML = ' ';
   shoppinglist.push(item);
   //display shoppinglist
   displayShoppinglists();
@@ -194,6 +260,7 @@ function clearFocus()
 
 //v 3.1: update function displayShoppinglists() to add to cart 
 function displayShoppinglists() {
+	document.getElementById("MyList").innerHTML = '';
 var TheList = "";
 var TheRow = "";
 var arrayLength = shoppinglist.length;
@@ -205,6 +272,7 @@ var btnupdate =  ' <input class="button" name="edit" type="button" value="Edit I
 var arrays = shoppinglist[i];
 arrays = "'"+arrays+"'";
 var btnaddcart =  '<label><input name="add" type="checkbox" id="adds" value="Add to Shopping Cart" onclick="addtoshopcart('+arrays+','+ i +')" /></label>';
+var btnsharelist = '<input class="button" id="shares" name="shares" type="submit" value="Share Shopping List" onclick="share()" />';
 TheRow = '<li>' + shoppinglist[i] + btndelete + ' '  + btnaddcart + '</li>';
 TheList += TheRow;
 }
@@ -212,14 +280,18 @@ TheList += TheRow;
 if (arrayLength > 0)
 {
   document.getElementById("MyList").innerHTML = '<ul>' + TheList + '</ul>';
+  document.getElementById("sharebutton").innerHTML = btnsharelist;
 }else
 {
-  document.getElementById("MyList").innerHTML = '';
+  document.getElementById("MyList").innerHTML = ' ';
+  document.getElementById("sharebutton").innerHTML = ' ';
+    document.getElementById("sharelist").innerHTML = ' ';
 }
 }
 
 //v3.1
 function displayShoppingCart() {
+	document.getElementById("MyCart").innerHTML = ''
 var TheList = "";
 var TheRow = "";
 var arrayLength = addtocart.length;
@@ -237,14 +309,18 @@ TheList += TheRow;
 }
 if (arrayLength > 0)
 {
-  document.getElementById("MyCart").innerHTML = 'Shopping Cart ' + '<br><ul>' + TheList + '</ul>';
+  document.getElementById("labels").innerHTML = 'Purchased';
+  document.getElementById("MyCart").innerHTML = '<ul>' + TheList + '</ul>';
 }else{
+  document.getElementById("labels").innerHTML = '';
   document.getElementById("MyCart").innerHTML = '';
+    
 }
 }
 
 //v3.1
 function deleteShoppinglists(position) {
+	 document.getElementById("sharelist").innerHTML = ' ';
   shoppinglist.splice(position, 1);
   displayShoppinglists();
   displayShoppingCart();
@@ -253,6 +329,7 @@ function deleteShoppinglists(position) {
 }
 //v3.1
 function deleteShoppingCart(position) {
+	 document.getElementById("sharelist").innerHTML = ' ';
   addtocart.splice(position, 1);
   displayShoppinglists();
   displayShoppingCart();
