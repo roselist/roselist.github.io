@@ -1,6 +1,11 @@
-body{
-	background-color:green;
-}
+$("body").gradientify({
+  gradients: [
+    { start: [237,85,101], stop: [218,68,83] },
+    { start: [70,207,176], stop: [52,188,157] },
+    { start: [52,152,219], stop: [41,128,185] }
+  ]
+});
+
 
 #wrapper{
 	background-color:white;
