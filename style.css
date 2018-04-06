@@ -6,7 +6,7 @@ background-size:50px 50px;
 }
 
 #button{
-color: Red;
+color: #990000;
 text-color: white;	
 }
 
@@ -21,8 +21,13 @@ text-color: white;
 }
 
 h1{
+	
   text-align: center;
-  color: a9a9a9;
+  color: #cc0000;
+}
+label{
+float: left;
+padding-right:10px;	
 }
 
 #item {

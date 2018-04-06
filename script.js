@@ -233,7 +233,7 @@ function addShoppinglist(item) {
   savecookie();
   }else
   {
-  alert("Item Description Required: Please enter now :)");
+  alert("Please enter an item");
   clearFocus();
   }
 }
