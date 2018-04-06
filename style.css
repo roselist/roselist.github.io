@@ -3,6 +3,7 @@ body{
 }
 
 #wrapper{
+	background-color:white;
   width:300px;
   margin:20px auto;
   padding:20px;
