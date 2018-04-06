@@ -5,6 +5,11 @@ linear-gradient(rgba(200,0,0,.5) 50%, transparent 50%);
 background-size:50px 50px;
 }
 
+#button{
+color: Red;
+text-color: white;	
+}
+
 #wrapper{
 	background-color:white;
   width:300px;
@@ -19,6 +24,11 @@ h1{
   text-align: center;
   color: a9a9a9;
 }
+
+#item {
+    float:left;
+    margin-bottom:5px;
+} 
 
 #adds {
 	 vertical-align:middle;
