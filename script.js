@@ -1,8 +1,8 @@
 // Laura Rose
 // Spring 2018
 // Web233 Javascript
-// Date: 4/6/2018
-// Assignment: Shpping List Week 14
+// Date: 4/16/2018
+// Assignment: Shpping List Week 15
 
 
 //v 4.0 save / get array via cookies
@@ -233,7 +233,7 @@ function addShoppinglist(item) {
   savecookie();
   }else
   {
-  alert("Please enter an item");
+  alert("Item Description Required: Please enter now :)");
   clearFocus();
   }
 }
